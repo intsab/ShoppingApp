@@ -9,17 +9,71 @@
         android:id="@+id/nav_home"
         android:name="com.intsab.intsabshop.ui.home.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_details"
-        android:name="com.intsab.intsabshop.ui.details.DetailsFragment"
-        android:label="@string/menu_details"
-        tools:layout="@layout/fragment_listing" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_listing"
+            app:destination="@id/nav_listing" />
+        <action
+            android:id="@+id/action_nav_home_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_cart"
+            app:destination="@id/nav_cart" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_listing"
         android:name="com.intsab.intsabshop.ui.listing.ListingFragment"
         android:label="@string/menu_listing"
+        tools:layout="@layout/fragment_listing">
+        <action
+            android:id="@+id/action_nav_listing_to_nav_details"
+            app:destination="@id/nav_details" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_details"
+        android:name="com.intsab.intsabshop.ui.details.DetailsFragment"
+        android:label="@string/menu_details"
         tools:layout="@layout/fragment_details" />
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.intsab.intsabshop.ui.cart.CartFragment"
+        android:label="cart_fragment"
+        tools:layout="@layout/cart_fragment">
+        <action
+            android:id="@+id/action_nav_cart_to_nav_conformation"
+            app:destination="@id/nav_conformation" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_conformation"
+        android:name="com.intsab.intsabshop.ui.conformation.ConformationFragment"
+        android:label="conformation_fragment"
+        tools:layout="@layout/conformation_fragment">
+        <action
+            android:id="@+id/action_nav_conformation_to_nav_success"
+            app:destination="@id/nav_success" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_success"
+        android:name="com.intsab.intsabshop.ui.success.SuccessFragment"
+        android:label="success_fragment"
+        tools:layout="@layout/success_fragment">
+        <action
+            android:id="@+id/action_nav_success_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.intsab.intsabshop.ui.categories.CategoriesFragment"
+        android:label="categories_fragment"
+        tools:layout="@layout/categories_fragment">
+        <action
+            android:id="@+id/action_categoriesFragment_to_nav_listing"
+            app:destination="@id/nav_listing" />
+    </fragment>
+
+
 </navigation>

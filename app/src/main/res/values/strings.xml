@@ -19,4 +19,8 @@
     <string name="share">Share</string>
     <string name="term_and_conditions">Term and Conditions</string>
     <string name="contact_us">Contact Us</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="proceed_to_checkout">Proceed To Checkout</string>
+    <string name="top_items_of_the_week">Top Items of the Week</string>
+    <string name="view_all">View All</string>
 </resources>
