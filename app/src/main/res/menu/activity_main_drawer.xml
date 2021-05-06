@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/hot_links">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/ic_icon_home"
+                    android:title="@string/home" />
+                <item
+                    android:id="@+id/nav_cart"
+                    android:icon="@drawable/ic_shopping_cart"
+                    android:title="@string/cart" />
+                <item
+                    android:id="@+id/nav_categories"
+                    android:icon="@drawable/ic_category"
+                    android:title="@string/categories" />
+                <item
+                    android:id="@+id/nav_all_items"
+                    android:icon="@drawable/ic_format_list_bulleted"
+                    android:title="@string/all_items" />
+
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/others">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_mobile_screen_share"
+                android:title="@string/share" />
+
+            <item
+                android:id="@+id/nav_terms"
+                android:icon="@drawable/ic_menu_book"
+                android:title="@string/term_and_conditions" />
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_contacts"
+                android:title="@string/contact_us" />
+        </menu>
+    </item>
+
+</menu>

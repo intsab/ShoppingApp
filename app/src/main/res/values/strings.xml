@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">IntsabShoping</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_listing">Listing</string>
+    <string name="menu_details">Details</string>
+    <string name="hot_links">Hot Links</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="categories">Categories</string>
+    <string name="all_items">All Items</string>
+    <string name="others">Others</string>
+    <string name="share">Share</string>
+    <string name="term_and_conditions">Term and Conditions</string>
+    <string name="contact_us">Contact Us</string>
+</resources>
