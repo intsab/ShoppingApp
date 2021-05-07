@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -19,8 +20,8 @@ import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.intsab.intsabshop.R;
 import com.intsab.intsabshop.Utils.AppUtils;
-import com.intsab.intsabshop.ui.home.adapters.CategoryGridAdapter;
 import com.intsab.intsabshop.ui.home.adapters.FeaturedImagesAdapter;
+import com.intsab.intsabshop.ui.home.adapters.HorizontalGridAdapter;
 import com.intsab.intsabshop.ui.home.adapters.ItemsListAdapter;
 import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
 
@@ -33,7 +34,7 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
 
     private final ArrayList<Integer> bannerImagesArray = new ArrayList<Integer>();
-    CategoryGridAdapter catAdapter;
+    HorizontalGridAdapter catAdapter;
     ItemsListAdapter itemsAdapter;
     RecyclerView categoriesRecyclerView;
     RecyclerView topProductsRecyclerView;
@@ -61,7 +62,19 @@ public class HomeFragment extends Fragment {
                 itemsAdapter = new ItemsListAdapter(productItems, requireContext(), new AppUtils.AdapterClickListener() {
                     @Override
                     public void clicked(String title) {
-                        Toast.makeText(requireContext(), "" + title, Toast.LENGTH_SHORT).show();
+                        int productId = 0;
+                        try {
+                            productId = Integer.parseInt(title);
+                        } catch (Exception exp) {
+                            productId = -1;
+                        }
+                        if (productId > 0) {
+                            Bundle bundle = new Bundle();
+                            bundle.putInt(AppUtils.KEY_PRODUCT_ID, productId);
+                            Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_details, bundle);
+                        } else {
+                            Toast.makeText(requireContext(), getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 topProductsRecyclerView.setAdapter(itemsAdapter);
@@ -74,10 +87,12 @@ public class HomeFragment extends Fragment {
         homeViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
             progressBar.setVisibility(View.GONE);
             if (categories != null) {
-                catAdapter = new CategoryGridAdapter(categories, new AppUtils.AdapterClickListener() {
+                catAdapter = new HorizontalGridAdapter(categories, new AppUtils.AdapterClickListener() {
                     @Override
                     public void clicked(String title) {
-                        Toast.makeText(requireContext(), "" + title, Toast.LENGTH_SHORT).show();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(AppUtils.KEY_CATEGORY_ID, title);
+                        Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_listing, bundle);
                     }
                 });
                 categoriesRecyclerView.setAdapter(catAdapter);
@@ -101,14 +116,14 @@ public class HomeFragment extends Fragment {
         view.findViewById(R.id.view_all_categories).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_categoriesFragment);
             }
         });
 
         view.findViewById(R.id.view_all_items).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Navigation.findNavController(view).navigate(R.id.action_nav_home_to_nav_listing);
             }
         });
 
@@ -119,6 +134,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setBannerView(View view) {
+        bannerImagesArray.clear();
         for (int i = 0; i < AppUtils.BANNER_IMAGES.length; i++)
             bannerImagesArray.add(BANNER_IMAGES[i]);
         ViewPager mPager = (ViewPager) view.findViewById(R.id.view_pager);

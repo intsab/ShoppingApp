@@ -1,4 +1,4 @@
-package com.intsab.intsabshop.ui.home.adapters;
+package com.intsab.intsabshop.ui.categories.adapters;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -34,7 +34,7 @@ public class CategoryGridAdapter extends RecyclerView.Adapter<CategoryGridAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem = layoutInflater.inflate(R.layout.category_list_item, parent, false);
+        View listItem = layoutInflater.inflate(R.layout.category_grid_item_layout, parent, false);
         return new ViewHolder(listItem);
     }
 

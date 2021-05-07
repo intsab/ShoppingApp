@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -39,12 +40,12 @@ public class ListingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        category = getArguments().getString(AppUtils.KEY_CATEGORY_ID);
         topProductsRecyclerView = view.findViewById(R.id.recyclerView);
         topProductsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         progressBar = (ProgressBar) view.findViewById(R.id.spin_kit);
         Sprite doubleBounce = new DoubleBounce();
         progressBar.setIndeterminateDrawable(doubleBounce);
-
 
         if (category.isEmpty()) {
             listingViewModel.getProducts(10).observe(getViewLifecycleOwner(), productItems -> {
@@ -63,7 +64,19 @@ public class ListingFragment extends Fragment {
             itemsAdapter = new ItemsListAdapter(productItems, requireContext(), new AppUtils.AdapterClickListener() {
                 @Override
                 public void clicked(String title) {
-                    Toast.makeText(requireContext(), "" + title, Toast.LENGTH_SHORT).show();
+                    int productId = 0;
+                    try {
+                        productId = Integer.parseInt(title);
+                    } catch (Exception exp) {
+                        productId = -1;
+                    }
+                    if (productId > 0) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(AppUtils.KEY_PRODUCT_ID, productId);
+                        Navigation.findNavController(requireView()).navigate(R.id.action_nav_listing_to_nav_details, bundle);
+                    } else {
+                        Toast.makeText(requireContext(), getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
             topProductsRecyclerView.setAdapter(itemsAdapter);

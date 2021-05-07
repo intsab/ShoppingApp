@@ -11,14 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.intsab.intsabshop.R;
 import com.intsab.intsabshop.Utils.AppUtils;
-import com.intsab.intsabshop.ui.home.adapters.CategoryGridAdapter;
+import com.intsab.intsabshop.Utils.decoration.GridDecoration;
+import com.intsab.intsabshop.ui.categories.adapters.CategoryGridAdapter;
 
 public class CategoriesFragment extends Fragment {
     ProgressBar progressBar;
@@ -38,10 +39,9 @@ public class CategoriesFragment extends Fragment {
         Sprite doubleBounce = new DoubleBounce();
         progressBar.setIndeterminateDrawable(doubleBounce);
 
-        LinearLayoutManager layoutManagerCat = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
         RecyclerView categoriesRecyclerView = view.findViewById(R.id.recyclerView);
-        categoriesRecyclerView.setLayoutManager(layoutManagerCat);
-
+        categoriesRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        categoriesRecyclerView.addItemDecoration(new GridDecoration(16));
 
         categoriesViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
             progressBar.setVisibility(View.GONE);

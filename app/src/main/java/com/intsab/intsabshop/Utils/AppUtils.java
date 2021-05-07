@@ -14,6 +14,8 @@ import java.net.InetAddress;
  */
 public class AppUtils {
     public static final Integer[] BANNER_IMAGES = {R.drawable.iv_1, R.drawable.iv_2, R.drawable.iv_1, R.drawable.iv_2};
+    public static String KEY_PRODUCT_ID = "product_id";
+    public static String KEY_CATEGORY_ID = "category_id";
 
     public static void loadImage(Context context, String url, ImageView imageView) {
         Glide.with(context)
