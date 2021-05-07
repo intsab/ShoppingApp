@@ -18,8 +18,7 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         return inflater.inflate(R.layout.fragment_home, container, false);
 
     }
@@ -27,5 +26,12 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        homeViewModel.getProducts(10).observe(getViewLifecycleOwner(), productItems -> {
+
+        });
+        homeViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
+
+        });
     }
 }

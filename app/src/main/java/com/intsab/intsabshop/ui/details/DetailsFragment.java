@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.intsab.intsabshop.R;
 
 public class DetailsFragment extends Fragment {
-
+    int id = 1;
     private DetailsViewModel detailsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -25,5 +25,8 @@ public class DetailsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        detailsViewModel.getProductDetails(id).observe(getViewLifecycleOwner(), productItems -> {
+
+        });
     }
 }

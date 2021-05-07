@@ -1,19 +1,19 @@
 package com.intsab.intsabshop.ui.home;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+import com.intsab.intsabshop.BaseViewModel;
+import com.intsab.intsabshop.data.Models.ProductItem;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+public class HomeViewModel extends BaseViewModel {
+
+    public LiveData<List<String>> getCategories() {
+        return repository.getCategories();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<ProductItem>> getProducts(int limit) {
+        return repository.getProducts(limit);
     }
 }

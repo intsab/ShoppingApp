@@ -14,23 +14,21 @@ import com.intsab.intsabshop.R;
 
 public class CategoriesFragment extends Fragment {
 
-    private CategoriesViewModel mViewModel;
+    private CategoriesViewModel categoriesViewModel;
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        categoriesViewModel = new ViewModelProvider(this).get(CategoriesViewModel.class);
         return inflater.inflate(R.layout.categories_fragment, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(CategoriesViewModel.class);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        categoriesViewModel.getCategories().observe(getViewLifecycleOwner(), categories -> {
+
+        });
     }
 }

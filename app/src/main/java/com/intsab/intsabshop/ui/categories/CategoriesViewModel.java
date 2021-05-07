@@ -1,7 +1,14 @@
 package com.intsab.intsabshop.ui.categories;
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
 
-public class CategoriesViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+import com.intsab.intsabshop.BaseViewModel;
+
+import java.util.List;
+
+public class CategoriesViewModel extends BaseViewModel {
+
+    public LiveData<List<String>> getCategories() {
+        return repository.getCategories();
+    }
 }

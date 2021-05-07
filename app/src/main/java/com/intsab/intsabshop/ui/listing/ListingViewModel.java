@@ -1,9 +1,19 @@
 package com.intsab.intsabshop.ui.listing;
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.LiveData;
 
-public class ListingViewModel extends ViewModel {
-    public ListingViewModel() {
+import com.intsab.intsabshop.BaseViewModel;
+import com.intsab.intsabshop.data.Models.ProductItem;
 
+import java.util.List;
+
+public class ListingViewModel extends BaseViewModel {
+    
+    public LiveData<List<ProductItem>> getProducts(int limit) {
+        return repository.getProducts(limit);
+    }
+
+    public LiveData<List<ProductItem>> getProducts(String category) {
+        return repository.getProductsByCategory(category);
     }
 }
