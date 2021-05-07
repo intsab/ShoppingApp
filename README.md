@@ -22,14 +22,16 @@ Users will able to see Top Products on the Home page.
 View all Buttons will navigate the user to Product Listing/ All Categories Screens.
 Clicking on Item will lead to the Item Details Page.
 Click on the category will get related items of that category.
-#Categories Screen
+# Categories Screen
 Entry Point From Home
 Users will able to see a Grid of categories.
 After Click User will Go to the listing page with the selected category filter.
-#Listing Screen
+# Listing Screen
 Use can see products on that screen 
 After Click user will able to see the details of the selected Item
 User can add Item to the cart
+# Details Screen
+User will able to see details of the product.
 # Cart Screen:
 Can be initiated from Drawe or ActionBar.
 Users will able to see cart items.
