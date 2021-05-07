@@ -19,12 +19,13 @@ import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.DoubleBounce;
 import com.intsab.intsabshop.R;
 import com.intsab.intsabshop.Utils.AppUtils;
+import com.intsab.intsabshop.data.Models.CartItem;
 import com.intsab.intsabshop.data.Models.ProductItem;
 import com.intsab.intsabshop.ui.home.adapters.ItemsListAdapter;
 
 import java.util.List;
 
-public class ListingFragment extends Fragment {
+public class ListingFragment extends Fragment implements AppUtils.AddToCartClickListener, AppUtils.AdapterClickListener {
     private String category = "";
     private ListingViewModel listingViewModel;
     RecyclerView topProductsRecyclerView;
@@ -61,24 +62,7 @@ public class ListingFragment extends Fragment {
     public void loadView(List<ProductItem> productItems) {
         progressBar.setVisibility(View.GONE);
         if (productItems != null) {
-            itemsAdapter = new ItemsListAdapter(productItems, requireContext(), new AppUtils.AdapterClickListener() {
-                @Override
-                public void clicked(String title) {
-                    int productId = 0;
-                    try {
-                        productId = Integer.parseInt(title);
-                    } catch (Exception exp) {
-                        productId = -1;
-                    }
-                    if (productId > 0) {
-                        Bundle bundle = new Bundle();
-                        bundle.putInt(AppUtils.KEY_PRODUCT_ID, productId);
-                        Navigation.findNavController(requireView()).navigate(R.id.action_nav_listing_to_nav_details, bundle);
-                    } else {
-                        Toast.makeText(requireContext(), getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+            itemsAdapter = new ItemsListAdapter(productItems, requireContext(), this, this);
             topProductsRecyclerView.setAdapter(itemsAdapter);
         } else {
             hideItemsView();
@@ -86,5 +70,28 @@ public class ListingFragment extends Fragment {
     }
 
     private void hideItemsView() {
+    }
+
+    @Override
+    public void clicked(String title) {
+        int productId = 0;
+        try {
+            productId = Integer.parseInt(title);
+        } catch (Exception exp) {
+            productId = -1;
+        }
+        if (productId > 0) {
+            Bundle bundle = new Bundle();
+            bundle.putInt(AppUtils.KEY_PRODUCT_ID, productId);
+            Navigation.findNavController(requireView()).navigate(R.id.action_nav_listing_to_nav_details, bundle);
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.something_went_wrong), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void addToCartListener(CartItem item) {
+        item.setQuantity(1);
+        listingViewModel.insertCartItem(item);
     }
 }

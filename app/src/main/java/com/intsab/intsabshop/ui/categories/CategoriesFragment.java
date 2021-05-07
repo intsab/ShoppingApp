@@ -5,12 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,7 +49,9 @@ public class CategoriesFragment extends Fragment {
                 CategoryGridAdapter catAdapter = new CategoryGridAdapter(categories, new AppUtils.AdapterClickListener() {
                     @Override
                     public void clicked(String title) {
-                        Toast.makeText(requireContext(), "" + title, Toast.LENGTH_SHORT).show();
+                        Bundle bundle = new Bundle();
+                        bundle.putString(AppUtils.KEY_CATEGORY_ID, title);
+                        Navigation.findNavController(view).navigate(R.id.action_categoriesFragment_to_nav_listing, bundle);
                     }
                 });
                 categoriesRecyclerView.setAdapter(catAdapter);

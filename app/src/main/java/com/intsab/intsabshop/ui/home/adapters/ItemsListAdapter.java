@@ -1,25 +1,25 @@
 package com.intsab.intsabshop.ui.home.adapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.intsab.intsabshop.R;
 import com.intsab.intsabshop.Utils.AppUtils;
+import com.intsab.intsabshop.Utils.CartUtils;
 import com.intsab.intsabshop.data.Models.ProductItem;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by intsabhaider
@@ -28,12 +28,14 @@ import java.util.Random;
 public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.ViewHolder> {
     private List<ProductItem> listData;
     private AppUtils.AdapterClickListener listener;
+    private AppUtils.AddToCartClickListener addToCartClickListener;
     private Context context;
 
-    public ItemsListAdapter(List<ProductItem> listData, Context context, AppUtils.AdapterClickListener listener) {
+    public ItemsListAdapter(List<ProductItem> listData, Context context, AppUtils.AdapterClickListener listener, AppUtils.AddToCartClickListener cartClickListener) {
         this.listData = listData;
         this.listener = listener;
         this.context = context;
+        addToCartClickListener = cartClickListener;
     }
 
     @NotNull
@@ -55,6 +57,14 @@ public class ItemsListAdapter extends RecyclerView.Adapter<ItemsListAdapter.View
             @Override
             public void onClick(View view) {
                 listener.clicked(item.getId());
+            }
+        });
+
+        holder.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addToCartClickListener.addToCartListener(CartUtils.productItemToCart(item));
+                Toast.makeText(context, context.getString(R.string.added_to_cart), Toast.LENGTH_SHORT).show();
             }
         });
     }

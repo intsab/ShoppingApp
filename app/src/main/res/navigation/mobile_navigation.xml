@@ -44,7 +44,7 @@
     <fragment
         android:id="@+id/nav_cart"
         android:name="com.intsab.intsabshop.ui.cart.CartFragment"
-        android:label="cart_fragment"
+        android:label="Cart"
         tools:layout="@layout/cart_fragment">
         <action
             android:id="@+id/action_nav_cart_to_nav_conformation"
@@ -53,7 +53,7 @@
     <fragment
         android:id="@+id/nav_conformation"
         android:name="com.intsab.intsabshop.ui.conformation.ConformationFragment"
-        android:label="conformation_fragment"
+        android:label="Confirm Order"
         tools:layout="@layout/conformation_fragment">
         <action
             android:id="@+id/action_nav_conformation_to_nav_success"
@@ -62,7 +62,7 @@
     <fragment
         android:id="@+id/nav_success"
         android:name="com.intsab.intsabshop.ui.success.SuccessFragment"
-        android:label="success_fragment"
+        android:label="Order Confirmed"
         tools:layout="@layout/success_fragment">
         <action
             android:id="@+id/action_nav_success_to_nav_home"
@@ -71,7 +71,7 @@
     <fragment
         android:id="@+id/nav_categories"
         android:name="com.intsab.intsabshop.ui.categories.CategoriesFragment"
-        android:label="categories_fragment"
+        android:label="Categories"
         tools:layout="@layout/categories_fragment">
         <action
             android:id="@+id/action_categoriesFragment_to_nav_listing"

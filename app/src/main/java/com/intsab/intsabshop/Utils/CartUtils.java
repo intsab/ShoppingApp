@@ -1,8 +1,9 @@
 package com.intsab.intsabshop.Utils;
 
 import com.intsab.intsabshop.data.Models.CartItem;
+import com.intsab.intsabshop.data.Models.ProductItem;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by intsabhaider
@@ -10,33 +11,26 @@ import java.util.ArrayList;
  */
 
 public class CartUtils {
-    public static ArrayList<CartItem> cartList = new ArrayList<>();
 
-    public static void clearCart() {
-        cartList.clear();
+
+    public static CartItem productItemToCart(ProductItem item) {
+        CartItem cartItem = new CartItem();
+        cartItem.setQuantity(0);
+
+        cartItem.setImage(item.getImage());
+        cartItem.setPrice(item.getPrice());
+        cartItem.setId(item.getId());
+        cartItem.setTitle(item.getTitle());
+        cartItem.setDescription(item.getDescription());
+        cartItem.setCategory(item.getCategory());
+        return cartItem;
     }
 
-    public static double getCartTotal() {
+    public static double getCartTotal(List<CartItem> cartItems) {
         double totalPrice = 0;
-        for (int x = 0; x < cartList.size(); x++) {
-            totalPrice = totalPrice + cartList.get(x).getPrice();
+        for (int x = 0; x < cartItems.size(); x++) {
+            totalPrice = totalPrice + cartItems.get(x).getPrice();
         }
         return totalPrice;
-    }
-
-    public static void removeItemFromCart(CartItem item) {
-        cartList.remove(item);
-    }
-
-    public static void addItemToCart(CartItem item) {
-        cartList.add(item);
-    }
-
-    public static void updateCart(CartItem item) {
-        for (int x = 0; x < cartList.size(); x++) {
-            if (item.getId() == cartList.get(x).getId()) {
-                cartList.get(x).setQuantity(item.getQuantity());
-            }
-        }
     }
 }
