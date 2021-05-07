@@ -43,3 +43,6 @@ User will able to see details of the product.
 - After the next button user will see Status Screen
 # Status Screen
 - Here User will be informed that You are done and continue shopping.
+
+Video of working Application is here https://github.com/intsab/ShoppingApp/blob/main/recodding.mov 
+Screenshot are Uploaded here https://github.com/intsab/ShoppingApp/tree/main/Screenshots
