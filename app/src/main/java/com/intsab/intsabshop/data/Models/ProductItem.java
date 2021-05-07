@@ -12,7 +12,7 @@ public class ProductItem {
     @SerializedName("title")
     private String title;
     @SerializedName("price")
-    private int price;
+    private double price;
     @SerializedName("description")
     private String description;
     @SerializedName("category")
@@ -36,7 +36,7 @@ public class ProductItem {
         this.title = title;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

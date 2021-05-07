@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="130dp"
-    android:layout_height="130dp"
-    android:background="@color/design_default_color_primary">
+    android:layout_width="150dp"
+    android:id="@+id/bg_category"
+    android:layout_height="140dp">
 
+<TextView
+    android:id="@+id/tv_cat_name"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:textStyle="bold"
+    android:textColor="@color/white"
+    android:background="@drawable/shadow"
+    android:layout_height="match_parent"
+    android:text="@string/loading"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,4 +10,5 @@
 
     <color name="primary_light">#f5c1d3</color>
     <color name="primary_dark">#E0457B</color>
+    <color name="link_color">#0000EE</color>
 </resources>
