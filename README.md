@@ -47,3 +47,7 @@ User will able to see details of the product.
 # Demo
 - Video of working Application is here https://github.com/intsab/ShoppingApp/blob/main/recodding.mov 
 - Screenshot are Uploaded here https://github.com/intsab/ShoppingApp/tree/main/Screenshots
+
+![Demo Shopping](https://github.com/intsab/ShoppingApp/blob/main/recodding.gif)
+
+
