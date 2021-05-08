@@ -1,7 +1,7 @@
 # Android Shopping Application Using MVVM
 
 ## Using JetPack, Room, Navigation & Retrofit
-![](https://img.shields.io/badge/android-Java-green) ![](https://img.shields.io/badge/JetPack-Navigation-orange) ![](https://img.shields.io/badge/JetPack-Room-blue)
+![](https://img.shields.io/badge/android-Java-green) ![](https://img.shields.io/badge/JetPack-Navigation-orange) ![](https://img.shields.io/badge/JetPack-Room-blue) ![](https://img.shields.io/badge/android-LiveData-green) ![](https://img.shields.io/badge/Architecture-MVVM-red) ![](https://img.shields.io/badge/TDD-Espresso-brightgreen)
 
 ### Component Used
 - MVVM Architecture.
